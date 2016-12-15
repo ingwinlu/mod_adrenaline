@@ -2,7 +2,7 @@ import os
 import py_compile
 import zipfile
 
-WOTVersion = "0.9.15.1.1"
+WOTVersion = "0.9.17.0"
 TARGET = "mod_adrenaline.zip"
 SRC = "mod_adrenaline.py"
 _COMPILED = SRC + 'c'

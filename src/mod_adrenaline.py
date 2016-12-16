@@ -114,23 +114,22 @@ overrideClassMethod = _hook_decorator(_OverrideClassMethod)
 
 """ XFW import end """
 
-g_versionWot = '0.9.17.0'
 g_versionMod = '0.1'
-g_mp3Player = None
-g_mp3File = None
+g_versionWot = '0.9.17.0'
+g_audioPath = None
 g_selectedTank = None
 g_warnActive = False
 g_hasAdrenalineRush = False
 
 
 def initialize():
-    global g_mp3Player
-    global g_mp3File
-    print('mod_adrenaline v.%s (%s)' % (g_versionMod, g_versionWot))
+    global g_audioPath
+    print('mod_adrenaline v.%s (for WOT Version %s)' % (g_versionMod, g_versionWot))
     globalPath = getGlobalPath()
-    modPath = os.path.normpath(os.path.join(globalPath, os.path.join('scripts', 'client', 'gui', 'mods', 'adrenaline')))
-    g_mp3Player = os.path.join(modPath, 'dlc.exe')
-    g_mp3File = os.path.join(modPath, 'adrenaline.mp3')
+    modPath = os.path.normpath(os.path.join(globalPath, 'scripts', 'client', 'gui', 'mods', 'adrenaline'))
+    mp3Player = os.path.join(modPath, 'dlc.exe')
+    mp3File = os.path.join(modPath, 'adrenaline.mp3')
+    g_audioPath = mp3Player + ' -p ' + mp3File
     tankCheckCallback()
 
 
@@ -214,5 +213,6 @@ def external_audio_player():
     proc.wShowWindow = subprocess.SW_HIDE
     audio_path = g_mp3Player + ' -p ' + g_mp3File
     subprocess.Popen(audio_path, startupinfo=proc)
+
 
 initialize()
